@@ -1,0 +1,30 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "trading"
+  description: "service"
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.cluster-q4dlx.q4dlx.sandbox744.opentlc.com/#https://github.com/rent-a-camel-idp/trading?che-editor=che-incubator/che-code/insiders&devfilePath=.devfilev2-vscode.yaml
+      title: CodeReady Workspaces (VS Code)
+      icon: web    
+    - url: https://devspaces.apps.cluster-q4dlx.q4dlx.sandbox744.opentlc.com/#https://github.com/rent-a-camel-idp/trading?che-editor=che-incubator/che-idea/next&devfilePath=.devfilev2-intellij.yaml
+      title: CodeReady Workspaces (JetBrains IntelliJ)
+      icon: web
+    - url: https://grafana-route-user-workload-grafana.apps.cluster-q4dlx.q4dlx.sandbox744.opentlc.com/d/AqEG4weWk/error-budget?orgId=1&refresh=5s&var-virtual_service=trading.bank-prod.svc.cluster.local&var-time_interval=1h&var-SLO=95&var-latency=1000
+      title: SRE Metrics (production)
+      icon: web
+  annotations:
+    'github.com/project-slug': rent-a-camel-idp/trading
+    'backstage.io/kubernetes-id': trading
+    'backstage.io/techdocs-ref': dir:.
+    'sonarqube.org/project-key': rent-a-camel-idp_trading
+    'prometheus.io/alert': ErrorBudgetBurn-critical-bank-prod-trading,ErrorBudgetBurn-warning-bank-prod-trading
+    'prometheus.io/rule': virtual_service:bank_prod_trading:error_rate_1d,virtual_service:bank_prod_trading:error_rate_1h,virtual_service:bank_prod_trading:error_rate_2h,virtual_service:bank_prod_trading:error_rate_30m
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "rms"
+  system: system:bank

@@ -1,0 +1,8 @@
+site_name: "trading"
+site_description: "service"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
